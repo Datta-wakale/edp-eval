@@ -1,0 +1,4 @@
+.row { display: flex; gap: 1rem; margin: 1rem 0; }
+.card { flex: 1; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px;
+        padding: 1rem; text-decoration: none; }
+.card:hover { border-color: var(--ifm-color-primary); }
