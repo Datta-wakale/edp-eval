@@ -1,0 +1,24 @@
+---
+title: Gated Feature Page
+---
+
+import ClientOnlyBlock from '@site/src/components/ClientOnlyBlock';
+
+## Always visible
+
+Intro text that is always shown.
+
+<ClientOnlyBlock>
+
+## Team-based access
+
+This heading only exists when the runtime flag is on.
+
+### Setup steps
+
+Details here.
+
+</ClientOnlyBlock>
+
+## Also always visible
+
