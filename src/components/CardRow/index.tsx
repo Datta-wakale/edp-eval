@@ -13,9 +13,9 @@ type CardRowProps = {
 export default function CardRow({ items }: CardRowProps) {
   return (
     <div className={styles.row}>
-      {items.map((item) => (
+      {items.map((item,index) => (
         <a
-          key={item.href}
+          key={`${item.href}-${index}`}
           href={item.href}
           className={styles.card}
         >
