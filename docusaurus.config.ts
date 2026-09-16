@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'EDP — Team Build',
+  title: 'EDP — Candidate Build',
   tagline: 'Building better documentation together',
   favicon: 'img/favicon.ico',
 
@@ -138,7 +138,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+     copyright: `Copyright © ${new Date().getFullYear()} EDP Evaluation. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,
