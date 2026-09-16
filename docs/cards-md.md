@@ -1,0 +1,18 @@
+---
+title: Card Grid (MD)
+---
+
+import CardRow from '@site/src/components/CardRow';
+
+Follow these steps:
+
+1. Create your project.
+2. Pick a capability:
+
+<CardRow items={[
+  { title: 'BigQuery', href: '/docs/intro' },
+  { title: 'GCS', href: '/docs/intro' },
+]} />
+
+1. Run the provisioning job.
+2. Verify access.
