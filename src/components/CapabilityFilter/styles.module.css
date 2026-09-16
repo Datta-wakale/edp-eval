@@ -1,0 +1,7 @@
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+.card { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px; padding: 1.25rem;
+        transition: opacity .2s ease, transform .2s ease; }
+.hidden { opacity: .25; pointer-events: none; }
+.search { width: 100%; padding: .75rem 1rem; border-radius: 999px;
+          border: 1px solid var(--ifm-color-emphasis-400); }
+.noResults { grid-column: 1 / -1; text-align: center; color: var(--ifm-color-emphasis-600); }
