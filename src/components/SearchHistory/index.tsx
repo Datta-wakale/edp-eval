@@ -6,11 +6,12 @@ export default function SearchHistory(){
     const [searchHistory,setSearchHistory] = useState<string[]>([]);
 
     useEffect(()=> {
-        const saved = localStorage.getItem("seacrh-history");
+        const saved = localStorage.getItem("search-history");
         if(saved){
             setSearchHistory(JSON.parse(saved));
         }
-    }, [])
+    }, []);
+
     const handleSearch = ()=> {
         if(!search.trim()){
             return;
