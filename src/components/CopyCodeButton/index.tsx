@@ -12,7 +12,7 @@ export default function CopyCodeButton({command}: CopyCodeCommands){
            await navigator.clipboard.writeText(command); 
            setCopied(true);
 
-           // Reset the copied sate after 2 seconds
+           // Reset the copied state after 2.5 seconds
               setTimeout(()=> {
                 setCopied(false);
               },2500);    
