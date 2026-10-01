@@ -48,9 +48,8 @@ export default function ExpandableContent({
       <button type="button" className={styles.button}
         onClick={toggleContent}
         aria-expanded={isExpanded} >
-        {isExpanded ? 'Show less' : 'Show more'}
+       {isExpanded ? 'Show Less' : 'Show More'}
       </button>
-      
     </div>
   );
 }
