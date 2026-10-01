@@ -1,0 +1,77 @@
+import DocumentationProgress from '@site/src/components/DocumentationProgress';
+
+import SearchHistory from '@site/src/components/SearchHistory';
+
+import RecentlyViewedDocs from '@site/src/components/RecentlyViewedDocs';
+
+import CopyCodeButton from '@site/src/components/CopyCodeButton';
+
+import FAQ from '@site/src/components/FAQ';
+
+import ExpandableContent from '@site/src/components/ExpandableContent';
+
+import ProblemReport from '@site/src/components/ProblemReport';
+
+## DocumentationProgress 
+     check the DocumentationProgress
+     
+<DocumentationProgress
+  topics={[
+    {
+      id: 'intro',
+      title: 'Introduction',
+    },
+    {
+      id: 'install',
+      title: 'Installation',
+    },
+    {
+      id: 'config',
+      title: 'Configuration',
+    },
+    {
+      id: 'auth',
+      title: 'Authentication',
+    },
+  ]}
+/>
+
+## Search SearchHistory
+
+Check Search History functionality is working or not 
+
+<SearchHistory />
+
+## RecentlyViewedDocs React Custom Component  
+
+<RecentlyViewedDocs 
+  currentDoc = {{
+     id: '101', title: 'Roman Reigns', description: 'Most no. of days as wwe champ.'
+  }}
+/>
+
+## CopyCode Component Rendering
+
+<CopyCodeButton command="pnpm install"/>
+
+## FAQ List
+
+See the List of FAQ maximize the Question to see answer 
+by clicking on the +
+
+<FAQ 
+  question = "can we install npm dep?"
+  answer = "yes use the command npm install to download dependencies"
+/>
+
+<ExpandableContent>
+      <div>
+          <p>ExpandableContent Demo nfdfv vvdsdds njf</p>
+          <p>ExpandableContent Demo nfdfv vvdsdds njf</p>
+          <p>ExpandableContent Demo nfdfv vvdsdds njf</p>
+          <p>ExpandableContent Demo nfdfv vvdsdds njf</p>
+          <p>ExpandableContent Demo nfdfv vvdsdds njf</p>
+      </div>
+</ExpandableContent>
+
+<ProblemReport />
