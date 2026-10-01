@@ -26,7 +26,7 @@ export default function DocumentationProgress({topics} : DocumentationProgressPr
             updated = completedTopics.filter((topicId)=> topicId !== id);
         }
         else {
-            updated = [...completedTopics,id];
+            updated = [...completedTopics, id]
         }
         setCompletedTopics(updated);
         localStorage.setItem("documentation-progress", JSON.stringify(updated));
@@ -34,7 +34,7 @@ export default function DocumentationProgress({topics} : DocumentationProgressPr
 
     const progress = topics.length === 0 ? 0 :
                 Math.round((completedTopics.length/topics.length) * 100);
-                console.log("progress ::37", progress);
+                console.log("progress ::37",progress);
     return(
         <div>
             <h3>Documentation Progress</h3>
@@ -47,8 +47,7 @@ export default function DocumentationProgress({topics} : DocumentationProgressPr
                     {topic.title}
                 </label>
             ))}
-
-            <p>Progress {progress}</p>
+         <p>Progress : {progress}</p>
         </div>
     )
 }
