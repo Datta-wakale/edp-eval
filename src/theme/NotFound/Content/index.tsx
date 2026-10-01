@@ -37,6 +37,7 @@ export default function NotFoundContent({className}: Props): ReactNode {
         <Link to="/">
           Return to home
         </Link>
+        
     </main>
   );
 }
