@@ -14,6 +14,12 @@ import ProblemReport from '@site/src/components/ProblemReport';
 
 import VersionSelector from '@site/src/components/VersionSelector';
 
+import DocumentationVersionManager from '@site/src/components/DocumentationVersionManager';
+
+import MaintainanceAnnoucement from '@site/src/components/MaintainanceAnnoucement';
+
+import EmpCard from '@site/src/components/EmpCard';
+
 ## DocumentationProgress 
      check the DocumentationProgress
      
@@ -81,3 +87,31 @@ by clicking on the +
 ## Select Version 
 
 <VersionSelector />
+
+## Version Manager 
+
+<DocumentationVersionManager />
+
+<MaintainanceAnnoucement message="The Progress page is under maintaince" />
+
+## Employee Card 
+
+<EmpCard
+  employees={[
+    {
+      fName: 'John',
+      lName: 'Doe',
+      phonNo: '+91 98765 43210',
+      jobTitle: 'Software Engineer',
+      email: 'john@example.com',
+    },
+    {
+      fName: 'Jane',
+      lName: 'Smith',
+      phonNo: '+91 98765 12345',
+      jobTitle: 'Product Manager',
+      email: 'jane@example.com',
+    },
+  ]}
+/>
+

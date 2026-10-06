@@ -18,10 +18,10 @@ export default function VersionSelector(){
                     <option value='v2'>V2</option>
                     <option value='v3'>V3</option>
                 </select>
-              {
-                 version === 'v3' ? (<p>This version support Beta features.</p>) 
-                                  : (<p>This Version does not support any beta features</p>)
-              }
+                {
+                    version === 'v3' ? (<p>In This Version Beta features Supported</p>) 
+                                     : (<p>This Version does not support Beta features</p>)
+                }
             </div>
     )
 }

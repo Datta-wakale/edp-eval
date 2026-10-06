@@ -75,6 +75,14 @@ const config: Config = {
   ],
 
   themeConfig: {
+
+    announcementBar : {
+        id: "maintancebar_example_v10",
+        content: "<strong>Maintainance Notice</strong> Our Systems will be down tommorow after 12pm",
+        backgroundColor: "#fff3cd",
+        textColor: "#856404",
+         isCloseable : true
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
@@ -82,6 +90,7 @@ const config: Config = {
     },
     navbar: {
       title: 'My Site',
+      // hideOnScroll: true,  
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',

@@ -33,7 +33,7 @@ export default function DocPaginator(props: Props): ReactNode {
             <Translate
               id="theme.docs.paginator.next"
               description="The label used to navigate to the next doc">
-              Go Forward
+                Go Forward 
             </Translate>
           }
           isNext

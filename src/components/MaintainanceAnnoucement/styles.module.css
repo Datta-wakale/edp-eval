@@ -1,0 +1,28 @@
+.announcement {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 16px;
+  margin-bottom: 24px;
+
+  background: #fff3cd;
+  border: 1px solid #f0ad4e;
+  border-radius: 6px;
+
+  color: #664d03;
+}
+
+.announcement button {
+  border: none;
+  background: transparent;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  color: inherit;
+}
+
+.announcement button:hover {
+  opacity: 0.7;
+}
