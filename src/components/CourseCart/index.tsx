@@ -136,7 +136,7 @@ export default function CourseCart(){
            </div>
            <hr />
         {
-            cart.length && 
+            cart.length && (
                 <>
                 <h2>Bill Summary</h2>
                   <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
@@ -144,7 +144,7 @@ export default function CourseCart(){
                   <p>Tax (18%): ₹{tax.toFixed(2)}</p>
                   <h3>Final Total: ₹{finalTotal.toFixed(2)}</h3>
                 </>
-        }
+        )}
         </div>
     )
 }
