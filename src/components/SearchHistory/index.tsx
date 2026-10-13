@@ -38,7 +38,7 @@ export default function SearchHistory(){
                 {
                     searchHistory.map((item)=> {
                         return(
-                            <li key={item}>{item}</li>
+                            <li key={item}> {item} </li>
                         )
                     })
                 }
