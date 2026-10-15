@@ -103,8 +103,7 @@ export default function CourseCart() {
                                type="button" 
                                onClick={() => addToCart(course)}
                                disabled={isAlreadyAdded}
-                               style={{ backgroundColor: isAlreadyAdded ? "#ccc" : "#007BFF", color: "white", border: "none", padding: "8px 12px", borderRadius: "4px", cursor: isAlreadyAdded ? "not-allowed" : "pointer" }}
-                           >
+                               style={{ backgroundColor: isAlreadyAdded ? "#ccc" : "#007BFF", color: "white", border: "none", padding: "8px 12px", borderRadius: "4px", cursor: isAlreadyAdded ? "not-allowed" : "pointer" }}>
                                {isAlreadyAdded ? "Already Added ✓" : "Add to cart"}
                            </button>
                         </div>
