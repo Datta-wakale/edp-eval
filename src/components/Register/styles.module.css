@@ -1,0 +1,129 @@
+
+.formcontainer {
+  max-width: 620px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.formcard {
+  padding: 2rem;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 16px;
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.formheader {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.formtitle {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: var(--ifm-heading-color);
+}
+
+.formsubtitle {
+  margin-bottom: 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.formgroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.formgroup label {
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.forminput {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.forminput:focus {
+  border-color: var(--ifm-color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+}
+
+.forminput::placeholder {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.inputerror {
+  border-color: var(--ifm-color-danger);
+}
+
+.inputerror:focus {
+  border-color: var(--ifm-color-danger);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--ifm-color-danger) 18%, transparent);
+}
+
+.errormessage {
+  margin: 0.4rem 0 0;
+  color: var(--ifm-color-danger);
+  font-size: 0.875rem;
+}
+
+.alertError,
+.alertSuccess {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.alertError {
+  color: var(--ifm-color-danger-darkest);
+  background: var(--ifm-color-danger-contrast-background);
+  border: 1px solid var(--ifm-color-danger);
+}
+
+.alertSuccess {
+  color: var(--ifm-color-success-darkest);
+  background: var(--ifm-color-success-contrast-background);
+  border: 1px solid var(--ifm-color-success);
+}
+
+.submitbutton {
+  min-height: 46px;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.submitbutton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media screen and (max-width: 576px) {
+  .formcontainer {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+
+  .formcard {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .formtitle {
+    font-size: 1.6rem;
+  }
+}
