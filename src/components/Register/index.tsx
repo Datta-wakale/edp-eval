@@ -17,6 +17,9 @@ interface User {
 
 type UserErrors = Partial<Record<keyof User, string>>;
 
+const emailPattern =
+    /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+
 export default function Register() {
     const [user, setUser] = useState<User>({
         Uname: "",
@@ -34,10 +37,12 @@ export default function Register() {
     // Handle input changes
     const userData = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
+        const nextValue =
+            name === "phone" ? value.replace(/\D/g, "").slice(0, 10) : value;
 
         setUser((prev) => ({
             ...prev,
-            [name]: value,
+            [name]: nextValue,
         }));
 
         setError((prev) => ({
@@ -54,29 +59,40 @@ export default function Register() {
         e.preventDefault();
 
         const newErrors: UserErrors = {};
+        const username = user.Uname.trim();
+        const email = user.email.trim();
 
-        if (!user.Uname.trim()) {
+        if (!username) {
             newErrors.Uname = "Username cannot be empty";
+        } else if (username.length < 3 || username.length > 30) {
+            newErrors.Uname = "Username must be between 3 and 30 characters";
+        } else if (!/^[A-Za-z0-9._ -]+$/.test(username)) {
+            newErrors.Uname =
+                "Username can contain letters, numbers, spaces, periods, underscores, and hyphens";
         }
 
-        if (!user.email.trim()) {
+        if (!email) {
             newErrors.email = "Email cannot be empty";
-        } else if (
-            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.email)
-        ) {
+        } else if (email.length > 254 || !emailPattern.test(email)) {
             newErrors.email = "Enter a valid email address";
         }
 
         if (!user.phone.trim()) {
             newErrors.phone = "Phone number is required";
-        } else if (!/^\d{10}$/.test(user.phone)) {
-            newErrors.phone = "Enter a valid 10-digit phone number";
+        } else if (!/^[6-9]\d{9}$/.test(user.phone)) {
+            newErrors.phone =
+                "Enter a valid 10-digit Indian mobile number starting with 6-9";
         }
 
         if (!user.password) {
             newErrors.password = "Password is required";
-        } else if (user.password.length < 6) {
-            newErrors.password = "Password must be at least 6 characters";
+        } else if (
+            user.password.length < 8 ||
+            !/[A-Za-z]/.test(user.password) ||
+            !/\d/.test(user.password)
+        ) {
+            newErrors.password =
+                "Password must be at least 8 characters and include a letter and a number";
         }
 
         if (!user.cnfmPassword) {
@@ -98,12 +114,16 @@ export default function Register() {
             setLoading(true);
 
             // Do not send confirm password to the API
-            const { cnfmPassword, ...registerData } = user;
-
+            const { cnfmPassword, ...registerData } = {
+                ...user,
+                Uname: username,
+                email,
+            };
+            // Call the register API function 
             await RegisterUser(registerData);
-            toast.success("Registration successful!");
-            // setSuccess("Registration successful!");
-
+            console.log("userData :: 124", registerData);
+            toast.success("Registeration sucessful!");
+            
             setUser({
                 Uname: "",
                 email: "",
@@ -152,6 +172,9 @@ export default function Register() {
                             placeholder="Enter your username"
                             value={user.Uname}
                             onChange={userData}
+                            minLength={3}
+                            maxLength={30}
+                            required
                             aria-invalid={!!error.Uname}
                             aria-describedby={
                                 error.Uname ? "Uname-error" : undefined
@@ -185,6 +208,9 @@ export default function Register() {
                             placeholder="Enter your email"
                             value={user.email}
                             onChange={userData}
+                            maxLength={254}
+                            autoComplete="email"
+                            required
                             aria-invalid={!!error.email}
                             aria-describedby={
                                 error.email ? "email-error" : undefined
@@ -218,6 +244,11 @@ export default function Register() {
                             placeholder="Enter your 10-digit phone number"
                             value={user.phone}
                             onChange={userData}
+                            inputMode="numeric"
+                            pattern="[6-9][0-9]{9}"
+                            maxLength={10}
+                            autoComplete="tel-national"
+                            required
                             aria-invalid={!!error.phone}
                             aria-describedby={
                                 error.phone ? "phone-error" : undefined
@@ -251,6 +282,9 @@ export default function Register() {
                             placeholder="Enter your password"
                             value={user.password}
                             onChange={userData}
+                            minLength={8}
+                            required
+                            autoComplete="new-password"
                             aria-invalid={!!error.password}
                             aria-describedby={
                                 error.password ? "password-error" : undefined
@@ -284,6 +318,8 @@ export default function Register() {
                             placeholder="Re-enter your password"
                             value={user.cnfmPassword}
                             onChange={userData}
+                            required
+                            autoComplete="new-password"
                             aria-invalid={!!error.cnfmPassword}
                             aria-describedby={
                                 error.cnfmPassword
