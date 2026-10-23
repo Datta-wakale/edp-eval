@@ -42,7 +42,7 @@ export default function SearchHistory(){
                         )
                     })
                 }
-            </ul>
+            </ul>      
         </div>
     )
 }
