@@ -1,46 +1,23 @@
-import {useEffect, useState} from 'react';
-import {useLocation} from '@docusaurus/router';
+import {useState , useEffect} from 'react'
 
-export const BOOKMARKS_STORAGE_KEY = 'documentation_bookmarks';
+const storage_key = "documentation_bookmark"
+const initialBookMarks:any = [];
 
-function readBookmarks(): string[] {
-  try {
-    const savedBookmarks = localStorage.getItem(BOOKMARKS_STORAGE_KEY);
-    const bookmarks = savedBookmarks ? JSON.parse(savedBookmarks) : [];
-    return Array.isArray(bookmarks) ? bookmarks : [];
-  } catch {
-    return [];
-  }
-}
+export default function BookMarkManager(){
 
-export default function BookMarkManager() {
-  const {pathname} = useLocation();
-  const [bookmarks, setBookmarks] = useState<string[]>([]);
+  const [bookmarks, setBookmarks] = useState(initialBookMarks);
 
-  useEffect(() => {
-    setBookmarks(readBookmarks());
-  }, [pathname]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
-  const isBookmarked = bookmarks.includes(pathname);
-  console.log("isBookmarked ::25", isBookmarked);
-  function toggleBookmark() {
-    const nextBookmarks = isBookmarked
-      ? bookmarks.filter((bookmark) => bookmark !== pathname)
-      : [...bookmarks, pathname];
+    useEffect(()=> {
 
-    localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify(nextBookmarks));
-    setBookmarks(nextBookmarks);
-  }
+        try {
+            const savedBookMarks = localStorage.getItem('storage_key');
+        } catch (error) {
+            
+        }
+    })
 
-  return (
-    <button
-      type="button"
-      className={`bookmark-button${isBookmarked ? ' bookmark-button--active' : ''}`}
-      onClick={toggleBookmark}
-      aria-pressed={isBookmarked}
-      aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark this page'}
-      title={isBookmarked ? 'Remove bookmark' : 'Bookmark this page'}>
-      <span aria-hidden="true">🔖</span>
-    </button>
-  );
 }
