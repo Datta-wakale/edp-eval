@@ -1,8 +1,18 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type {Configuration as WebpackConfiguration} from 'webpack';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+type DevServerOptions = {
+  proxy?: {context: string[]; target: string}[];
+  [key: string]: unknown;
+};
+
+type WebpackConfigWithDevServer = WebpackConfiguration & {
+  devServer?: DevServerOptions;
+};
 
 const config: Config = {
   title: 'EDP — Team Build',
@@ -26,6 +36,34 @@ const config: Config = {
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+
+  plugins: [
+    function apiProxyPlugin() {
+      return {
+        name: 'api-proxy',
+        configureWebpack(config) {
+          const configWithDevServer =
+            config as WebpackConfigWithDevServer;
+          const currentDevServer =
+            configWithDevServer.devServer &&
+            typeof configWithDevServer.devServer === 'object'
+              ? configWithDevServer.devServer
+              : {};
+          configWithDevServer.devServer = {
+            ...currentDevServer,
+            proxy: [
+              ...(currentDevServer.proxy ?? []),
+              {
+                context: ['/api'],
+                target: 'http://127.0.0.1:3001',
+              },
+            ],
+          };
+          return configWithDevServer;
+        },
+      };
+    },
+  ],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

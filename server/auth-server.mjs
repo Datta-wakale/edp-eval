@@ -167,6 +167,18 @@ async function handleRequest(request, response) {
 
     const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "localhost"}`);
 
+    if (request.method === "GET" && url.pathname === "/api/users") {
+        const database = JSON.parse(await readFile(databasePath, "utf8"));
+        const users = database.users.map((user) => ({
+            id: user.id,
+            firstName: user.firstName ?? user.name ?? "",
+            lastName: user.lastName ?? "",
+            email: user.email,
+        }));
+        sendJson(response, 200, { users });
+        return;
+    }
+
     if (request.method === "GET" && url.pathname === "/api/session") {
         const session = readSession(request);
         if (!session) {

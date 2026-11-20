@@ -26,18 +26,7 @@ const emailPattern =
     /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
 
 function getApiUrl(path: string) {
-    const { hostname, protocol } = window.location;
-    const codespace = hostname.match(/^(.*)-\d+(\..+)$/);
-
-    if (codespace) {
-        return `${protocol}//${codespace[1]}-3001${codespace[2]}/api${path}`;
-    }
-
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
-        return `${protocol}//${hostname}:3001/api${path}`;
-    }
-
-    throw new Error("The demo authentication API is available in Codespaces or localhost.");
+    return `/api${path}`;
 }
 
 function isAuthenticatedUser(value: unknown): value is AuthenticatedUser {
