@@ -4,7 +4,14 @@
       "id": "1",
       "name": "Datta",
       "email": "datta@gmail.com",
-      "password": "demo123"
+      "passwordHash": "scrypt:c4fbefe808e0a85e72f1599266d16268:ada9cc744d1e0a4380b5c6453287457721c528d654e21e55a7392d4f8699e98bcf2a3be8620cf0337ff09ada73fbcf40ffb8a7cc98b438348ccfc1a2ef3b8312"
+    },
+    {
+      "id": "demo-user",
+      "firstName": "Demo",
+      "lastName": "User",
+      "email": "demo.user@example.com",
+      "passwordHash": "scrypt:718acf4527286cdc7d507282bb660c80:e35110d40634d182b4ebd7373975598c47488c9c8d6ec6d9e34d976d3e23be14431412c23cc6f2cd8931ba4497b3a4463687b32a0613ce2933a3e784766d357d"
     }
   ]
 }
