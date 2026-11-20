@@ -22,7 +22,7 @@ export default function BookMarkManager() {
   }, [pathname]);
 
   const isBookmarked = bookmarks.includes(pathname);
-  console.log("isBookmarked ::25", isBookmarked);
+
   function toggleBookmark() {
     const nextBookmarks = isBookmarked
       ? bookmarks.filter((bookmark) => bookmark !== pathname)
