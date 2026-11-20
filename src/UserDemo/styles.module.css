@@ -1,0 +1,251 @@
+.loginPage {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgb(96 165 250 / 20%), transparent 42%),
+    linear-gradient(135deg, #f1f5ff 0%, #f8fafc 55%, #e8f4ff 100%);
+}
+
+.card {
+  width: min(100%, 28rem);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid #dce5f2;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 24px 70px rgb(23 45 84 / 13%);
+}
+
+.cardHeader {
+  margin-bottom: 1.75rem;
+}
+
+.eyebrow {
+  color: #3156a6;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+
+.title {
+  margin: 0.45rem 0 0.35rem;
+  color: #172554;
+  font-size: clamp(1.8rem, 5vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  margin: 0;
+  color: #64748b;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.75rem;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.stepper > span:not(.stepLine) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.activeStep,
+.completeStep {
+  color: #1d4ed8;
+}
+
+.activeStep::first-letter,
+.completeStep::first-letter,
+.inactiveStep::first-letter {
+  font-weight: 800;
+}
+
+.stepLine {
+  height: 1px;
+  flex: 1;
+  background: #dbe3ef;
+}
+
+.inactiveStep {
+  color: #94a3b8;
+}
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  color: #263650;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.field input {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.65rem;
+  outline: none;
+  background: #fff;
+  color: #172554;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.field input:focus {
+  border-color: #3b67d9;
+  box-shadow: 0 0 0 3px rgb(59 103 217 / 16%);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+.primaryButton,
+.logoutButton {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.65rem;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.primaryButton {
+  background: #2857c5;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: #1d43a1;
+  transform: translateY(-1px);
+}
+
+.primaryButton:disabled,
+.logoutButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0.75rem;
+  margin-top: 0.15rem;
+}
+
+.backButton {
+  min-height: 2.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.65rem;
+  background: #fff;
+  color: #334155;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.backButton:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.error {
+  color: #b91c1c;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.apiError {
+  margin: 1.1rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #fecaca;
+  border-radius: 0.65rem;
+  background: #fef2f2;
+  color: #991b1b;
+  font-size: 0.88rem;
+}
+
+.status {
+  color: #475569;
+}
+
+.authenticated {
+  display: grid;
+  gap: 1rem;
+}
+
+.authenticated p {
+  margin: 0;
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+.logoutButton {
+  background: #c62828;
+}
+
+.logoutButton:hover:not(:disabled) {
+  background: #a61f1f;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .loginPage {
+    min-height: calc(100vh - var(--ifm-navbar-height));
+    padding: 1.5rem 1rem;
+  }
+
+  .card {
+    border-radius: 1rem;
+  }
+}
+
+[data-theme="dark"] .loginPage {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgb(59 103 217 / 20%), transparent 42%),
+    linear-gradient(135deg, #0b1220 0%, #111827 55%, #0c1a2c 100%);
+}
+
+[data-theme="dark"] .card {
+  border-color: #334155;
+  background: #172033;
+}
+
+[data-theme="dark"] .title,
+[data-theme="dark"] .field label,
+[data-theme="dark"] .field input {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .authenticated p,
+[data-theme="dark"] .status {
+  color: #a7b5ca;
+}
+
+[data-theme="dark"] .field input,
+[data-theme="dark"] .backButton {
+  border-color: #475569;
+  background: #111827;
+}
+
+[data-theme="dark"] .stepLine {
+  background: #475569;
+}
