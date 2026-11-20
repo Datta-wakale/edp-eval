@@ -268,6 +268,15 @@ const server = createServer((request, response) => {
     });
 });
 
+server.on("error", (error) => {
+    if (error.code === "EADDRINUSE") {
+        console.error(`Authentication API port ${PORT} is already in use.`);
+    } else {
+        console.error("Could not start the authentication API:", error);
+    }
+    process.exitCode = 1;
+});
+
 server.listen(PORT, "0.0.0.0", () => {
     const codespaceName = process.env.CODESPACE_NAME;
     const domain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN;
